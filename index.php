@@ -1,3 +1,7 @@
+<?php session_start(); 
+if ($isconnect = false == true) {
+
+    } else {?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,10 +49,6 @@
                     <li class="active"><a data-scroll href="#about">Accueil</a></li>
                     <li><a data-scroll href="#speakers">Map</a></li>
                     <li><a data-scroll href="#schedule">Mon Compte</a></li>
-                    <li><a data-scroll href="#partner">Partner</a></li>
-                    <!-- <li><a data-scroll href="#">Sponsorship</a></li> -->
-                    <li><a data-scroll href="#faq">FAQ</a></li>
-                    <li><a data-scroll href="#photos">Photos</a></li>
 
                 </ul>
             </div>
@@ -58,7 +58,7 @@
 
     <header id="site-header" class="site-header valign-center">
         <div class="intro">
-
+            
             <h2>Bienvenue sur</h2>
 
             <h1>GEO BOAT FINDER</h1>
@@ -66,11 +66,53 @@
             <p>Nous sommes heureux d'aider de jeunes marins à se repérer en mer</p>
 
             <a class="btn btn-white" data-scroll href="#registration">Inscrivez-vous</a>
-
         </div>
     </header>
 
-    <section id="location" class="section location">
+
+    <section id="registration" class="section registration">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Formulaire d'inscription</h3>
+                </div>
+            </div>
+
+            <form action="#" id="registration-form">
+                <div class="row">
+                    <div class="col-md-12" id="registration-msg" style="display:none;">
+                        <div class="alert"></div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nom" id="nom" name="nom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Prénom" id="prenom" name="prenom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Téléphone" id="telephone" name="telephone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Mot de passe" id="mdp" name="mdp" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt20">
+                    <button type="submit" class="btn btn-black" id="registration-submit-btn">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- <section id="location" class="section location">
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
@@ -80,7 +122,9 @@
             </div>
         </div>
     </section>
+-->
 
+                    <?php }?>
     <footer class="site-footer">
         <div class="container">
             <div class="row">
