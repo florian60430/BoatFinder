@@ -9,9 +9,9 @@ private $_email;
 private $_telephone;
 private $_mdp;
 
-function __construct($bdd) {
+function __construct($bdd, $idUSer) {
 
-    $data = $bdd->query("SELECT * from user");
+    $data = $bdd->query("SELECT * from user where id_user = ".$idUSer."");
     $tabData = $data->fetch();
     
     $this->_idUser = $tabData['id_user'];

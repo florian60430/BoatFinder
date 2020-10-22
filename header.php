@@ -2,6 +2,7 @@
 
 include 'config.php';
 
+
 $bdd = NULL;
 
 try {

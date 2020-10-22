@@ -8,6 +8,10 @@
  * 2.0 Global Style
  */
 
+.margin-login {
+    margin-bottom: 100px;
+}
+
 html {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
