@@ -1,7 +1,10 @@
-<?php session_start(); 
-if ($isconnect = false == true) {
+<?php session_start();
 
-    } else {?>
+include "header.php";
+include "METIER/fonction.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,13 +20,21 @@ if ($isconnect = false == true) {
     <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
+<?php 
+if (isset($isconnect)) { 
 
-<body data-spy="scroll" data-target="#site-nav">
-    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
-        <div class="container">
-            <div class="navbar-header">
+    if ($isconnect == true) {
 
-                <!-- logo 
+        session_destroy();
+
+} else { ?>
+
+    <body data-spy="scroll" data-target="#site-nav">
+        <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <!-- logo 
                 <div class="site-branding">
                     <a class="logo" href="index.html">
                         
@@ -32,87 +43,95 @@ if ($isconnect = false == true) {
                 </a>
             </div>
             -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-            </div>
-            <!-- /.navbar-header -->
+                </div>
+                <!-- /.navbar-header -->
 
-            <div class="collapse navbar-collapse" id="navbar-items">
-                <ul class="nav navbar-nav navbar-right">
+                <div class="collapse navbar-collapse" id="navbar-items">
+                    <ul class="nav navbar-nav navbar-right">
 
-                    <!-- navigation menu -->
-                    <li class="active"><a data-scroll href="#about">Accueil</a></li>
-                    <li><a data-scroll href="#speakers">Map</a></li>
-                    <li><a data-scroll href="#schedule">Mon Compte</a></li>
+                        <!-- navigation menu -->
+                        <li class="active"><a data-scroll href="#about">Accueil</a></li>
+                        <li><a data-scroll href="#speakers">Map</a></li>
+                        <li><a data-scroll href="#schedule">Mon Compte</a></li>
 
-                </ul>
-            </div>
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <header id="site-header" class="site-header valign-center">
-        <div class="intro">
-            
-            <h2>Bienvenue sur</h2>
-
-            <h1>GEO BOAT FINDER</h1>
-
-            <p>Nous sommes heureux d'aider de jeunes marins à se repérer en mer</p>
-
-            <a class="btn btn-white" data-scroll href="#registration">Inscrivez-vous</a>
-        </div>
-    </header>
-
-
-    <section id="registration" class="section registration">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="section-title">Formulaire d'inscription</h3>
+                    </ul>
                 </div>
             </div>
+            <!-- /.container -->
+        </nav>
 
-            <form action="#" id="registration-form">
+        <header id="site-header" class="site-header valign-center">
+            <div class="intro">
+
+                <h2>Bienvenue sur</h2>
+
+                <h1>GEO BOAT FINDER</h1>
+
+                <p>Nous sommes heureux d'aider de jeunes marins à se repérer en mer</p>
+
+                <a class="btn btn-white" data-scroll href="#registration">Inscrivez-vous</a>
+            </div>
+        </header>
+
+        <?php
+        if (isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['mdp'])) {
+            $result = inscription($bdd, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['mdp']);
+
+            if ($result == true) {
+
+                $_SESSION['connect'] = true;
+            }
+        } ?>
+
+        <section id="registration" class="section registration">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-12" id="registration-msg" style="display:none;">
-                        <div class="alert"></div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nom" id="nom" name="nom" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Prénom" id="prenom" name="prenom" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Téléphone" id="telephone" name="telephone" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Mot de passe" id="mdp" name="mdp" required>
-                        </div>
+                    <div class="col-md-12">
+                        <h3 class="section-title">Formulaire d'inscription</h3>
                     </div>
                 </div>
-                <div class="text-center mt20">
-                    <button type="submit" class="btn btn-black" id="registration-submit-btn">Envoyer</button>
-                </div>
-            </form>
-        </div>
-    </section>
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="col-md-12" id="registration-msg" style="display:none;">
+                            <div class="alert"></div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom" id="nom" name="nom" required>
+                            </div>
 
-    <!-- <section id="location" class="section location">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Prénom" id="prenom" name="prenom" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Téléphone" id="telephone" name="telephone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Mot de passe" id="mdp" name="mdp" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt20">
+                        <input type="submit" class="btn btn-black" id="registration-submit-btn" name="btnSubmit"> <a href=""> Déja inscrit ? </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- <section id="location" class="section location">
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
@@ -124,7 +143,7 @@ if ($isconnect = false == true) {
     </section>
 -->
 
-                    <?php }?>
+    <?php }} ?>
     <footer class="site-footer">
         <div class="container">
             <div class="row">
@@ -146,6 +165,6 @@ if ($isconnect = false == true) {
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
     <script src="assets/js/main.js"></script>
-</body>
+    </body>
 
 </html>
