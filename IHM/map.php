@@ -60,7 +60,7 @@ $longitude = $TabData['longitude'];
 
                     <!-- navigation menu -->
                     <li><a data-scroll href="../index.php">Accueil</a></li>
-                    <li class="active"><a href="IHM/map.php">Map</a></li>
+                    <li class="active"><a href="map.php">Map</a></li>
                      <!-- <li><a data-scroll href="#schedule">Mon Compte</a></li> -->
                     <li><a href="../METIER/deconnexion.php">Deconnexion</a></li>
                     <!-- TODO faire un bouton de deconnexion -->
