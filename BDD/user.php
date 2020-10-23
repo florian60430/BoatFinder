@@ -9,9 +9,9 @@ private $_email;
 private $_telephone;
 private $_mdp;
 
-function __construct($bdd, $idUSer) {
+function __construct($bdd, $email, $mdp) {
 
-    $data = $bdd->query("SELECT * from user where id_user = ".$idUSer."");
+    $data = $bdd->query("SELECT * from user where email = '".$email."' && mdp = '".$mdp."'");
     $tabData = $data->fetch();
     
     $this->_idUser = $tabData['id_user'];
@@ -20,43 +20,6 @@ function __construct($bdd, $idUSer) {
     $this->_email = $tabData['email'];
     $this->_telephone = $tabData['telephone'];
     $this->mdp = $tabData['mdp'];
-}
-
-/* --------------
-    Inscription
--------------- */
-
-function inscription($bdd, $nom, $prenom, $email, $telephone, $mdp) {
-
-    $result = $bdd->query("INSERT INTO `user`(`id_user`, `nom`, `prenom`, `email`, `telephone`, `mdp`) VALUES (NULL ,'".$nom."','".$prenom."','".$email."', '".$telephone."','".$mdp."')");
-    
-    if ($result == false){
-
-        $isconnect =  false; 
-    
-    }  else {
-
-        $isconnect = true;
-    }
-}
-
-/* -------------
-    Connexion 
---------------*/
-
-
-function verification($bdd, $email, $mdp) {
-
-    $Data = $bdd->query("SELECT email, mdp from user where email = '".$email."'&& mdp = '".$mdp."'");
-    
-    if ($Data->rowcount() >= 1) {
-
-        return true;
-
-    } else {
-
-        return false;
-    }
 }
 
 

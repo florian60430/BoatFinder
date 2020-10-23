@@ -37,16 +37,21 @@
                 </div>
             </div>
             <form action="" method="POST">
+                <?php if(isset($result)) {
+                    if ($result == false){
+                        echo "<div class='error'> email ou mot de passe incorrect </div>";
+                    }
+                } ?>
                 <div class="row">
                     <div class="col-md-12" id="registration-msg" style="display:none;">
                         <div class="alert"></div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
+                            <input type="email" class="form-control" placeholder="Email" id="email" name="mail" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Mot de passe" id="mdp" name="mdp" required>
+                            <input type="password" class="form-control" placeholder="Mot de passe" id="mdp" name="password" required>
                         </div>
                     </div>
                 </div>
@@ -57,18 +62,7 @@
         </div>
     </section>
 
-
     <!-- REGISTER FORM -->
-    <?php
-    if (isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['mdp'])) {
-        $result = inscription($bdd, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['mdp']);
-
-        if ($result == true) {
-
-            $_SESSION['connect'] = 1;
-        }
-    } ?>
-
     <section id="registration" class="section registration">
         <div class="container">
             <div class="row">
@@ -109,7 +103,6 @@
             </form>
         </div>
     </section>
-
     <!-- script -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

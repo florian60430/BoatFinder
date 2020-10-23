@@ -1,4 +1,4 @@
-<?php include "header.php";
+<?php include "./header.php";
 
 /* -------------
     Inscription
@@ -37,4 +37,15 @@ function verification($bdd, $email, $mdp)
 
         return false;
     }
+}
+
+
+function selectPrenomUser($bdd, $idUser) 
+{
+    $data = $bdd->query("SELECT * from user where id_user = '".$idUser."'");
+    $tabData = $data->fetch();
+
+    return $tabData['prenom'];
+
+
 }

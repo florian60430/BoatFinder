@@ -33,10 +33,10 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <!-- navigation menu -->
-                    <li class="active"><a data-scroll href="#about">Accueil</a></li>
-                    <li><a href="IHM/map.php">Map</a></li>
+                    <li><a data-scroll href="../index.php">Accueil</a></li>
+                    <li class="active"><a href="map.php">Map</a></li>
                    <!-- <li><a data-scroll href="#schedule">Mon Compte</a></li> -->
-                    <li><a href="METIER/deconnexion.php">Deconnexion</a></li>
+                    <li><a href="../METIER/deconnexion.php">Deconnexion</a></li>
                    <!-- TODO faire un bouton de deconnexion -->
 
                 </ul>
@@ -48,23 +48,8 @@
     <header id="site-header" class="site-header valign-center">
         <div class="intro">
 
-            <h1>Bienvenue
-                <?php
-
-                if (isset($_SESSION['id_user'])){
-
-                   echo $Prenom = selectPrenomUser($bdd, $_SESSION['id_user']);
-                } else {
-
-                $user = new User($bdd, $email, $mdp);
-                $_SESSION['id_user'] = $user->GetIdUser();
-                echo $Prenom =  $user->GetPrenom();
-
-                }
-                echo $_SESSION['id_user']?>
-          
-            </h1>
-            <p>Nous sommes heureux d'aider de jeunes marins à se repérer en mer</p>
+            <h1>HO NON !</h1>
+            <p>Il s'emblerais que vous n'ayez aucune coordonnées GPS en registré ...</p>
         </div>
     </header>
 

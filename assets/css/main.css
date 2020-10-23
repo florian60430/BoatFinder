@@ -8,6 +8,10 @@
  * 2.0 Global Style
  */
 
+.error {
+    color: red;
+}
+
 .margin-login {
     margin-bottom: 100px;
 }
