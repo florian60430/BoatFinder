@@ -60,8 +60,7 @@
                 $_SESSION['id_user'] = $user->GetIdUser();
                 echo $Prenom =  $user->GetPrenom();
 
-                }
-                echo $_SESSION['id_user']?>
+                }?>
           
             </h1>
             <p>Nous sommes heureux d'aider de jeunes marins à se repérer en mer</p>
